@@ -8,8 +8,8 @@ import {
 
 import React, {
   Component,
+  PropTypes
 } from 'react';
-import PropTypes from 'prop-types';
 
 import MapTypes from './MapTypes';
 
