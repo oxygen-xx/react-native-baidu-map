@@ -62,6 +62,7 @@ export default {
     if (Platform.OS == 'ios') {
       return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition((position) => {
+          // resolve(position.coords)
           try {
             _module.reverseGeoCodeGPS(position.coords.latitude, position.coords.longitude);
           }
@@ -72,7 +73,7 @@ export default {
           DeviceEventEmitter.once('onGetReverseGeoCodeResult', resp => {
             resp.latitude = parseFloat(resp.latitude);
             resp.longitude = parseFloat(resp.longitude);
-            resolve(resp);
+            resolve(resp,position.coords);
           });
         }, (error) => {
           reject(error);
